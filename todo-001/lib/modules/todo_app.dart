@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
 import 'package:todo/modules/todo.dart';
 
@@ -168,9 +167,15 @@ class _TodoAppState extends State<TodoApp> {
                 return Future.value(false);
               }
             },
-
-            // 사라진 후 event
-            onDismissed: (direction) => Future.value(false),
+            // 사라진 후 event, confirmDismiss 가 실행이 끝나면
+            onDismissed: (direction) {
+              if (direction == DismissDirection.endToStart) {
+                setState(() {
+                  // index 번째 삭제하기
+                  todoList.removeAt(index);
+                });
+              }
+            },
           );
         },
       ),
