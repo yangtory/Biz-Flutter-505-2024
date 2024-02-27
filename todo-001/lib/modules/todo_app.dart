@@ -84,7 +84,7 @@ class _TodoAppState extends State<TodoApp> {
               alignment: Alignment.centerLeft,
               child: const Icon(
                 Icons.save_alt_sharp,
-                size: 36,
+                size: 25,
                 color: Colors.white,
               ),
             ),
@@ -96,7 +96,7 @@ class _TodoAppState extends State<TodoApp> {
               alignment: Alignment.centerRight,
               child: const Icon(
                 Icons.delete_outline,
-                size: 36,
+                size: 25,
                 color: Colors.white,
               ),
             ),
