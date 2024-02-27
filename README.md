@@ -48,3 +48,14 @@ flutter get
 - upgrade 과정에서 문제가 발생한 경우 : 특히 `flutter clean` 과정에서 오류가 많이 발생함.
 - `flutter pub cache repair` 를 실행하고 `flutter clean` 을 실행
 - 프로젝트 폴더의 `build` 폴더를 삭제하고 다시 `flutter clean` 실행
+
+## Template 이 없는 기본구조의 프로젝트 생성
+
+```bash
+flutter create --org=com.callor hello -e
+```
+
+## git repository clone 한 프로젝트
+
+- 각 프로젝트 폴더에서 : `flutter pub get` 실행
+- 오류가 발생하면 : `flutter pub clean` 실행 후 `flutter pub get`
