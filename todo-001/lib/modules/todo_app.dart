@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:todo/modules/todo.dart';
+import 'package:todo/model/todo.dart';
 
 class TodoApp extends StatefulWidget {
   const TodoApp({super.key});
