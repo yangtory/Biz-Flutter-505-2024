@@ -1,7 +1,5 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -32,6 +30,7 @@ class _HomePageState extends State<HomePage> {
     if (_timerRun) {
       // duration 이라고 정해진 시간마다 한번씩 밑의 함수를 실행해
       // 함수 : count 값을 -- 해
+      // periodic : 특정 작업을 반복적으로 수행하도록 예약하는 함수
       _timer = Timer.periodic(
         const Duration(seconds: 1),
         (timer) {
