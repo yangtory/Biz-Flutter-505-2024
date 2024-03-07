@@ -33,7 +33,7 @@ class _MainPageState extends State<MainPage> {
   int _pageIndex = 1;
   int wantTimer = 20;
 
-//textfiled 안의 값은 문자열이기때문에 매개변수 String
+//textfield 안의 값은 문자열이기때문에 매개변수 String
   void onChangeSetting(String value) {
     if (value.length > 3) {
       ScaffoldMessenger.of(context)
