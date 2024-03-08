@@ -1,10 +1,10 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  const HomePage({super.key, required this.workTimer});
+  final int workTimer;
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -21,9 +21,30 @@ class _HomePageState extends State<HomePage> {
   /// 이럴때 late 키워드를 부착하여 초금있다가 아래 코드에서
   /// 변수를 꼭! 초기화 할테니 일단 보류 해줘 라는 말 임
   late Timer _timer;
-  static const int wantTimer = 10;
-  int _count = wantTimer;
+  // main 으로 부터 전달받은 workTimer
+  // workTimer 는 setting_page 에서 일할시간을 변경하면 그 값을 전달해주는
+  // 전달자 state 이다.
+  // 즉, setting_page 에서 일 할 시간을 변경하면 timer 의 전체시간이 변경되어야 한다.
+
+  // 일반적인 코드 형식이라면
+  // int _count = workTimer 이라고 사용한다.
+
+  // 하지만 Flutter 에 State<> 에서는
+  // int _count = widget.workTimer 라고 사용해야 한다.
+  // 문제는 State<> class 영역에서는 widget 을 사용할 수 없다.
+  // 따라서 _count 변수에 workTimer 값을 할당하기 위해서는 다른 방법을 사용해야 됨
+
+  // Flutter 의 State<> class 에는 initState() 라는 함수를 사용할 수 있다.
+  // 이 함수에서는 _count 변수에 widget.workTimer 값을 할당하는 코드를 사용해야 함
+  int _count = 5;
   bool _timerRun = false;
+
+  /// State class 가 mount(화면이 모두 그려졌을때)될 때 자동으로 실행되는 함수
+  @override
+  void initState() {
+    super.initState();
+    _count = widget.workTimer;
+  }
 
   void _onPressed() {
     setState(() {
@@ -37,7 +58,7 @@ class _HomePageState extends State<HomePage> {
         (timer) {
           setState(() => _count--);
           if (_count < 1) {
-            _count = wantTimer;
+            _count = widget.workTimer;
             _timerRun = false;
             timer.cancel();
           }
