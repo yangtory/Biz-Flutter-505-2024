@@ -125,7 +125,7 @@ class _MainPageState extends State<MainPage> {
   /// PageController 타입의 변수 선언
   /// HTML tag 에 id 를 적용하는 것처럼 flutter 에서 화면에 표시되는
   /// component 에 id 를 부착하기 위해 선언하는 변수
-  final _pageController = PageController(initialPage: 0);
+  final pageController = PageController(initialPage: 0);
   @override
   Widget build(BuildContext context) {
     // Scaffold : 어플 layout 고정시켜줌
@@ -143,7 +143,7 @@ class _MainPageState extends State<MainPage> {
         // PageView : 여러개 페이지를 볼수있도록 함
         body: PageView(
           // page 넘어가게하깅 - controller 먼저!!
-          controller: _pageController,
+          controller: pageController,
           // 스크롤 방향 가로로 설정하기
           scrollDirection: Axis.horizontal,
           // 페이지가 바뀌면 pageindex에 value 값을 넣는다
@@ -171,7 +171,7 @@ class _MainPageState extends State<MainPage> {
             // state 를 변화시키는 코드 만들기
             // 바텀네비 value값을 주고 pageindex에 보관
             _pageIndex = value;
-            _pageController.animateToPage(
+            pageController.animateToPage(
               value,
               // transition 같은거
               duration: const Duration(milliseconds: 500),

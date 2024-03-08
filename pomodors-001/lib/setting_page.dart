@@ -58,6 +58,7 @@ class _SettingPageState extends State<SettingPage> {
                   /// 필요로 하도록 선언되어 있다 : final Function(String) onChange
                   ///
                   /// 필요한 값을 전달하기 위하여 함수 선언형으로 event 핸들러를 사용한다.
+                  // 전달받은 함수는 widget. 으로 받는다.
                   onChanged: (value) => widget.onChange(value),
                   decoration: const InputDecoration(
                     labelText: "일할시간",
@@ -70,7 +71,6 @@ class _SettingPageState extends State<SettingPage> {
               SettingsTile(
                 leading: const Icon(Icons.timer_outlined),
                 title: const TextField(
-                  // 전달받은 함수는 widget. 으로 받는다.1
                   keyboardType: TextInputType.number,
                   decoration: InputDecoration(labelText: "휴식시간"),
                 ),
